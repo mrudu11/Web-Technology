@@ -1,0 +1,56 @@
+Express => It is a minimal and flexible web application framework for node.js that simplifies the developement of web server and APIs .
+node.js is not working on complex and large so we use Express
+features of Express routing middle ware support 
+                    request and response handling 
+                    rest APIs  creations
+                    templet rendering 
+npm => node package manager
+'/' router
+
+
+imp =>
+diff bet package .json and package log.json
+diff bet dev dependenciea and dependancies.
+.env => port no are saved here 
+
+Activity =>27/03/2026
+http types 
+department => home page display course 
+what is middleware fun and wht we use 
+where we use middleware company level
+types of middle ware
+write two or three coding example on middleware
+write 2/4 examples of querry parameters.
+what is querry parameters why we use querry parameters in real time company work.
+
+**********Routing in Express.js********************
+routing refrese to determining how an application is response to the client request for a specific url and http methods.
+'/' this represent the home page 
+components of routing
+url path ,http methods, handler function 
+npm init => package.json => configuration 
+npm install express => node module and package-lock.json
+
+*****middle ware *************
+def => middleware function  are function that executes during the life cycle of request before sending the final response .
+they have access to request response and next . they have access for 3 parameters res req and next
+
+****flow*****
+client request 
+        |
+        |
+ middleware 
+        |
+        |
+route handler
+        |
+        |
+    response
+        
+response object send data  back to the client
+
+common res method 
+res.send => send text 
+res.json => same json
+res.status => send http status
+res.sendfiles => send files
