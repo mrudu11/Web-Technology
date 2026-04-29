@@ -1,0 +1,23 @@
+<h1>Data Binding</h1>
+<h5>data binding means connecting the components data to the UI </h5>
+<p>Two types of data binding as one way binding and two way binding . one way has types interpolation , property and data binding </p>
+<h3>One way Data binding</h3>
+<h4>Interpolation binding</h4>
+<div>
+  <p>Name is : {{fname}} and age is : {{age}}</p>
+</div>
+
+<h4>Property binding</h4>
+<div>
+    <input [value] = "fname"><br>
+    <input [value] = "age"><br>
+</div>
+
+<h4>Event binding</h4>
+<div>
+    <button (click)="button_click()">Click me</button>
+</div>
+
+<h3>Two way data binding</h3>
+<input [(ngModel)] = "fname"  placeholder="enter name"> <br><br>
+<input [(ngModel)] = "age"  placeholder="enter age"> <br><br>
