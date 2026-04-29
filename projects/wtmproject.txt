@@ -1,0 +1,154 @@
+***************home.js page****************************
+const courses = [
+    {
+        id: 1,
+        name: "Artificial Intelligence and Machine Learning",
+        dept: "AIML",
+        fees: "₹1,20,000",
+        details: "Learn AI, Machine Learning, Python, Data Science."
+    },
+    {
+        id: 2,
+        name: "Computer Science",
+        dept: "CSE",
+        fees: "₹1,00,000",
+        details: "Programming, Web Dev, DBMS, Operating Systems."
+    },
+    {
+        id: 3,
+        name: "Mechanical Engineering",
+        dept: "MECH",
+        fees: "₹90,000",
+        details: "Thermodynamics, Machines, Design."
+    }
+];
+const container = document.getElementById("courses");
+
+courses.forEach(function(course) {
+
+    const div = document.createElement("div");
+
+    div.className = "course";
+
+    div.innerHTML =
+        "<h3>" + course.name + "</h3>" +
+        "<p>" + course.dept + "</p>";
+
+    
+    div.onclick = function() {
+        localStorage.setItem("course", JSON.stringify(course));
+        window.location.href = "courses.html";
+    };
+
+    container.appendChild(div);
+});
+
+
+
+****************home.html**************************************
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dkte courses</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Available Courses</h1>
+    <div id="courses"></div>
+    <script src="home.js"></script>
+</body>
+</html>
+***********course.html***************
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Details</title>
+</head>
+<body>
+
+<h1>Course Details</h1>
+
+<div id="details"></div>
+
+<button id="registerBtn">Register</button>
+<button onclick="goBack()">Back</button>
+
+<script src="courses.js"></script>
+</body>
+</html>
+***************course.js*********************
+const course = JSON.parse(localStorage.getItem("course"));
+
+const detailsDiv = document.getElementById("details");
+
+if (course) {
+    detailsDiv.innerHTML = `
+        <h2>${course.name}</h2>
+        <p><strong>Department:</strong> ${course.dept}</p>
+        <p><strong>Details:</strong> ${course.details}</p>
+        <p><strong>Fees:</strong> ${course.fees}</p>
+    `;
+} else {
+    detailsDiv.innerHTML = "<p>No course selected</p>";
+}
+
+document.getElementById("registerBtn").onclick = function() {
+    window.location.href = "register.html";
+};
+
+function goBack() {
+    window.location.href = "home.html"; 
+}
+****************register.js********************
+document.getElementById("form").onsubmit = function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+
+    const error = document.getElementById("error");
+    const msg = document.getElementById("msg");
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if (name.trim() === "") {
+        error.innerText = "Name is required!";
+        return;
+    }
+
+    if (!email.match(emailPattern)) {
+        error.innerText = " Please enter a valid email!";
+        return;
+    }
+
+    alert("Registration Successful!");
+};
+*****************reg.html************
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Course Registration</h2>
+
+    <div id="courseDetails"></div>
+
+    <form id="form">
+        <input type="text" id="name" placeholder="Enter Name"><br><br>
+        <input type="email" id="email" placeholder="Enter Email"><br><br>
+        <p id="error" style="color:red;"></p>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h3 id="msg"></h3>
+    <script src="register.js"></script>
+
+</body>
+</html>
+
+
